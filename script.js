@@ -9,14 +9,13 @@ const quoteContainer = document.querySelector("#quote-container");
 // Function to get the quote
 async function getQuotes() {
   loading();
-  const apiUrl = "https://type.fit/api/quotes";
+  const apiUrl = "https://programming-quotesapi.vercel.app/api/random";
   try {
     const response = await fetch(apiUrl);
     const data = await response.json();
     complete();
-    const randomNumber = Math.floor(Math.random() * data.length);
-    const quote = data[randomNumber];
-    quotes.textContent = quote.text;
+    const quote = data;
+    quotes.textContent = quote.quote;
     author.textContent = quote.author;
     if (!quote.author) {
       author.textContent = "Unknown";
